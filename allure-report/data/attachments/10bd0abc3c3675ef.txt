@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//android.widget.ListView[@resource-id=\"com.socialnmobile.dictapps.notepad.color.note:id/select_dialog_listview\"]/android.widget.LinearLayout[1]"
-}

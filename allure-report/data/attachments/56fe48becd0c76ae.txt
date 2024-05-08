@@ -1,3 +1,0 @@
-.........Console Logs.........
-
-[90m2024-05-04T06:46:57.208Z[39m [32mDEBUG[39m [97m@wdio/utils:shim[39m: Finished to run "afterStep" hook in 0ms

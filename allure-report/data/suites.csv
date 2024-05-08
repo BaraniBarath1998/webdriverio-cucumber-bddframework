@@ -1,5 +1,4 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Sat May 04 12:53:40 IST 2024","Sat May 04 12:53:46 IST 2024","5226","","download colornote app and test the application.: Add new notes in colornote","","","","When Add new notes and verify notes added successfully",""
-"broken","Fri May 03 13:27:24 IST 2024","Fri May 03 13:27:32 IST 2024","8657","","download colornote app and test the application.","","","","Add new notes in colornote",""
-"passed","Sat May 04 12:53:37 IST 2024","Sat May 04 12:53:40 IST 2024","3602","","download colornote app and test the application.: Add new notes in colornote","","","","Given Access the colornote and click on plus icon on top",""
-"passed","Sat May 04 12:53:46 IST 2024","Sat May 04 12:53:46 IST 2024","1","","download colornote app and test the application.: Add new notes in colornote","","","","",""
+"passed","Wed May 08 19:52:27 IST 2024","Wed May 08 19:52:27 IST 2024","1","","download colornote app and test the application.: Add new notes in colornote","","","","",""
+"passed","Wed May 08 19:52:12 IST 2024","Wed May 08 19:52:27 IST 2024","14433","","download colornote app and test the application.: Add new notes in colornote","","","","When Add new notes and verify notes added successfully",""
+"passed","Wed May 08 19:52:08 IST 2024","Wed May 08 19:52:12 IST 2024","3831","","download colornote app and test the application.: Add new notes in colornote","","","","Given Access the colornote and click on plus icon on top",""

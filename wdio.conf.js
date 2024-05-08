@@ -1,6 +1,8 @@
 const { prototype } = require('events');
 const path = require('path');
 const allure = require('allure-commandline')
+// below dynamic import to import chai module
+import('chai')
 exports.config = {
     //
     // ====================
@@ -25,7 +27,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './features/**/Colornote.feature'
+        './test/feature/Colornote.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -59,7 +61,7 @@ exports.config = {
         'appium:deviceName' : 'Pixel 8 Pro',
         'appium:automationName' : 'uiautomator2',
         'appium:androidversion' : '11',
-        'appium:app' : path.join(process.cwd(),'test/android/ColorNote-Notepad.apk'),
+        'appium:app' : path.join(process.cwd(),'app/android/ColorNote-Notepad.apk'),
         'appium:autoGrandPermissions' : true
     }],
 
@@ -146,7 +148,7 @@ exports.config = {
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./features/step-definitions/colcornote.js'],
+        require: ['./test/feature/step-definitions/*.js'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
