@@ -7,8 +7,8 @@ import('chai')
 exports.config = {
     // This Config file is used for running scripts on browser stack
 
-    user : 'baranibarathmuru_HKoqst',
-    key : 'NZGZYzSMyDqbyNEF3t71',
+    user : process.env.BROWSERSTACK_USER,
+    key : process.env.BROWSERSTACK_KEY,
 
     specs: [
         './test/feature/android-native.spec.feature'
