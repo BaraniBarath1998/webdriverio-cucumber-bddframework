@@ -7,14 +7,15 @@ const allureReporter = require('@wdio/allure-reporter').default
 
 Given("Access the colornote and click on plus icon on top", async() => {
     // Click on allow button
-    allureReporter.addFeature("Verify plus icon is working");
-    allureReporter.addSeverity("Normal");
-    allureReporter.addStory("Color Note plus icon - JIRA 1");
+    // allureReporter.addFeature("Verify plus icon is working");
+    // allureReporter.addSeverity("Normal");
+    // allureReporter.addStory("Color Note plus icon - JIRA 1");
     
     
     // await $('//*[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]').click();
     // Click on allow button using POM structure
     await addnoteScreenobj.permissionBtn.click();
+    await $('//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]').click();
     // Click on skip button
     await $('//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/btn_start_skip"]').click();
     await $('//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/main_btn1"]').click();

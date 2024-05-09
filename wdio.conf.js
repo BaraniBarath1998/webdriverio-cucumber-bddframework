@@ -27,7 +27,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/feature/Colornote.feature'
+        './test/feature/android-native.spec.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -57,11 +57,11 @@ exports.config = {
     //
     capabilities: [{
         // browserName: 'chrome',
-        'appium:platformName' : 'Android',
-        'appium:deviceName' : 'Pixel 8 Pro',
+        'platformName' : 'android',
+        'appium:deviceName' : 'Google Pixel 8 Pro',
         'appium:automationName' : 'uiautomator2',
-        'appium:androidversion' : '11',
-        'appium:app' : path.join(process.cwd(),'app/android/ColorNote-Notepad.apk'),
+        'appium:androidversion' : '14.0',
+        'appium:app' : path.join(process.cwd(),'app/android/ApiDemos-debug.apk'),
         'appium:autoGrandPermissions' : true
     }],
 

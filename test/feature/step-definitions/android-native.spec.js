@@ -60,7 +60,7 @@ Given('Access the Date widget dialog box', async() => {
 
 When('Get the currentdate and change the date', async() => {
    const currentdate = await ($('//android.widget.TextView[@resource-id="io.appium.android.apis:id/dateDisplay"]'));
-   const date = currentdate.getText();
+   const date = await currentdate.getText();
    await $('~change the date').click();
    //scrool to right
    await $('android=new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollForward()');
