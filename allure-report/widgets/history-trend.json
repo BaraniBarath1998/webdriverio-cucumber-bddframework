@@ -1,1 +1,1 @@
-[{"data":{"failed":0,"broken":3,"skipped":2,"passed":18,"unknown":0,"total":23}}]
+[{"buildOrder":2,"reportUrl":"http://localhost:8080/job/appiumjob/2/allure","reportName":"AllureReport","data":{"failed":0,"broken":3,"skipped":2,"passed":18,"unknown":0,"total":23}}]

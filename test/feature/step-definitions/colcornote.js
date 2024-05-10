@@ -12,9 +12,9 @@ Given("Access the colornote and click on plus icon on top", async() => {
     // allureReporter.addStory("Color Note plus icon - JIRA 1");
     
     
-    // await $('//*[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]').click();
+    await $('//*[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]').click();
     // Click on allow button using POM structure
-    await addnoteScreenobj.permissionBtn.click();
+    // await addnoteScreenobj.permissionBtn.click();
     await $('//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]').click();
     // Click on skip button
     await $('//*[@resource-id="com.socialnmobile.dictapps.notepad.color.note:id/btn_start_skip"]').click();
