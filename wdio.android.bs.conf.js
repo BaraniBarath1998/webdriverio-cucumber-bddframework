@@ -1,41 +1,23 @@
-// const { prototype } = require('events');
-const path = require('path');
-// const path = import('path')
-const allure = require('allure-commandline');
-// const allureCommandline = require('allure-commandline');
+const { prototype } = require('events');
+const allureReporter = require('@wdio/allure-reporter').default
+const allure = require('allure-commandline')
+// require('dotenv').config()
+require('dotenv').config()
+console.log("process is",process.env.BROWSERSTACK_USER)
 // below dynamic import to import chai module
 import('chai')
+
+
 exports.config = {
-    //
-    // ====================
-    // Runner Configuration
-    // ====================
-    // WebdriverIO supports running e2e tests as well as unit and component tests.
-    port: 4723,
-    runner: 'local',
-    //
-    // ==================
-    // Specify Test Files
-    // ==================
-    // Define which test specs should run. The pattern is relative to the directory
-    // of the configuration file being run.
-    //
-    // The specs are defined as an array of spec files (optionally using wildcards
-    // that will be expanded). The test for each spec file will be run in a separate
-    // worker process. In order to have a group of spec files run in the same worker
-    // process simply enclose them in an array within the specs array.
-    //
-    // The path of the spec files will be resolved relative from the directory of
-    // of the config file unless it's absolute.
-    //
+    // This Config file is used for running scripts on browser stack
+
+    user : process.env.BROWSERSTACK_USER,
+    key : process.env.BROWSERSTACK_KEY,
+
     specs: [
-        './test/feature/android-native.feature'
+        './test/feature/android-native.spec.feature'
     ],
     // Patterns to exclude.
-    exclude: [
-        // 'path/to/excluded/files'
-    ],
-    //
     // ============
     // Capabilities
     // ============
@@ -62,8 +44,8 @@ exports.config = {
         'platformName' : 'android',
         'appium:deviceName' : 'Google Pixel 8 Pro',
         'appium:automationName' : 'uiautomator2',
-        'appium:androidversion' : '14.0',
-        'appium:app' : 'C:/webdriverIO-cucumber-BDDframework/webdriverio-cucumber-bddframework/app/android/ApiDemos-debug.apk',
+        'appium:platformVersion' : '14.0',
+        'appium:app' : 'bs://5e438e51758b76a2361cc21619c5381c006d95ae',
         'appium:autoGrandPermissions' : true
     }],
 
@@ -114,7 +96,16 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium'],
+    services : [
+    ['browserstack',
+        {
+            app: 'bs://5e438e51758b76a2361cc21619c5381c006d95ae'
+        },
+        {
+            buildIdentifier: '#${BUILD_NUMBER}'
+        }
+    ]
+            ],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -142,7 +133,8 @@ exports.config = {
     {
         outputDir: 'allure-results',
         disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: false
+        disableWebdriverScreenshotsReporting: false,
+        issueLinkTemplate:'10/5/2024'
         // addConsoleLogs: true
         // useCucumberStepReporter: true
     }]],
@@ -190,7 +182,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
     // onPrepare: function (config, capabilities) {
-    //    },
+    // },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -337,7 +329,6 @@ exports.config = {
      */
      onComplete: function(exitCode, config, capabilities, results) {
         const reportError = new Error('Could not generate Allure report')
-        // const g = allureCommandline()
         const generation = allure(['generate', 'allure-results', '--clean'])
         return new Promise((resolve, reject) => {
             const generationTimeout = setTimeout(
