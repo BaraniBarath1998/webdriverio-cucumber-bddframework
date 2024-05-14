@@ -1,6 +1,9 @@
 const { prototype } = require('events');
 const allureReporter = require('@wdio/allure-reporter').default
 const allure = require('allure-commandline')
+const fs = require('fs');
+const path = require('path');
+const direc = 'C:\webdriverIO-cucumber-BDDframework\webdriverio-cucumber-bddframework\allure-results';
 // require('dotenv').config()
 require('dotenv').config()
 console.log("process is",process.env.BROWSERSTACK_USER)
@@ -181,8 +184,19 @@ exports.config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+        console.log("started");
+
+        function removeAllFilesSync(directory) {
+            const files = fs.readdirSync(directory);
+            
+            for (const file of files) {
+                const filePath = path.join(directory, file);
+                fs.unlinkSync(filePath);
+            }
+        }
+        removeAllFilesSync('C:/webdriverIO-cucumber-BDDframework/webdriverio-cucumber-bddframework/allure-results');
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
