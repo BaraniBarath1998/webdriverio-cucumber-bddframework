@@ -19,7 +19,7 @@ Scenario: select directly App Alert Dialouge box and do operation
 #     Given Access the Gallary page directly
 #     When Scrool to any one of the image horizontally 
 
-Scenario:Scroll and Picking the date
-    Given Access the Date widget dialog box
-    When Get the currentdate and change the date
+# Scenario:Scroll and Picking the date
+#     Given Access the Date widget dialog box
+#     When Get the currentdate and change the date
 

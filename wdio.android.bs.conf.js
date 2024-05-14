@@ -184,19 +184,19 @@ exports.config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    onPrepare: function (config, capabilities) {
-        console.log("started deleting allure files");
+//    onPrepare: function (config, capabilities) {
+//         console.log("started deleting allure files");
 
-        function removeAllFilesSync(directory) {
-            const files = fs.readdirSync(directory);
+//         function removeAllFilesSync(directory) {
+//             const files = fs.readdirSync(directory);
             
-            for (const file of files) {
-                const filePath = path.join(directory, file);
-                fs.unlinkSync(filePath);
-            }
-        }
-        removeAllFilesSync('allure-results');
-    },
+//             for (const file of files) {
+//                 const filePath = path.join(directory, file);
+//                 fs.unlinkSync(filePath);
+//             }
+//         }
+//         removeAllFilesSync('allure-results');
+//     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -341,26 +341,26 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-     onComplete: function(exitCode, config, capabilities, results) {
-        const reportError = new Error('Could not generate Allure report')
-        const generation = allure(['generate', 'allure-results', '--clean'])
-        return new Promise((resolve, reject) => {
-            const generationTimeout = setTimeout(
-                () => reject(reportError),
-                5000)
+    //  onComplete: function(exitCode, config, capabilities, results) {
+    //     const reportError = new Error('Could not generate Allure report')
+    //     const generation = allure(['generate', 'allure-results', '--clean'])
+    //     return new Promise((resolve, reject) => {
+    //         const generationTimeout = setTimeout(
+    //             () => reject(reportError),
+    //             5000)
 
-            generation.on('exit', function(exitCode) {
-                clearTimeout(generationTimeout)
+    //         generation.on('exit', function(exitCode) {
+    //             clearTimeout(generationTimeout)
 
-                if (exitCode !== 0) {
-                    return reject(reportError)
-                }
+    //             if (exitCode !== 0) {
+    //                 return reject(reportError)
+    //             }
 
-                console.log('Allure report successfully generated')
-                resolve()
-            })
-        })
-     },
+    //             console.log('Allure report successfully generated')
+    //             resolve()
+    //         })
+    //     })
+    //  },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
