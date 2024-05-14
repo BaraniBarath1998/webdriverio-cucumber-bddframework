@@ -185,7 +185,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
     onPrepare: function (config, capabilities) {
-        console.log("started");
+        console.log("started deleting allure files");
 
         function removeAllFilesSync(directory) {
             const files = fs.readdirSync(directory);
@@ -195,7 +195,7 @@ exports.config = {
                 fs.unlinkSync(filePath);
             }
         }
-        removeAllFilesSync('C:/webdriverIO-cucumber-BDDframework/webdriverio-cucumber-bddframework/allure-results');
+        removeAllFilesSync('allure-results');
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
