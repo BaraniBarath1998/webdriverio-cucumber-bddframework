@@ -5,6 +5,8 @@ const allure = require('allure-commandline');
 // const allureCommandline = require('allure-commandline');
 // below dynamic import to import chai module
 import('chai')
+const fs = require('fs');
+const direc = 'C:\webdriverIO-cucumber-BDDframework\webdriverio-cucumber-bddframework\allure-results';
 exports.config = {
     //
     // ====================
@@ -29,7 +31,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/feature/android-native.feature'
+        './test/feature/android-native.spec.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -189,8 +191,19 @@ exports.config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    //    },
+    onPrepare: function (config, capabilities) {
+                console.log("started deleting allure files");
+
+        function removeAllFilesSync(directory) {
+            const files = fs.readdirSync(directory);
+            
+            for (const file of files) {
+                const filePath = path.join(directory, file);
+                fs.unlinkSync(filePath);
+            }
+        }
+        removeAllFilesSync('allure-results');
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.

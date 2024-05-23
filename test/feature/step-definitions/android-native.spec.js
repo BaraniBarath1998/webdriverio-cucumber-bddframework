@@ -1,7 +1,11 @@
-const {Given,When,Then} = require('@cucumber/cucumber')
+const {Given,When,Then} = require('@cucumber/cucumber');
+const { default: AllureReporter } = require('@wdio/allure-reporter');
 
 Given('Access the App Alert Dialouge box directly', async () => {
   // Write code here that turns the phrase above into concrete actions
+
+  AllureReporter.addFeature('FEATURE-A');
+  AllureReporter.addSeverity('critical');
   await driver.startActivity("io.appium.android.apis","io.appium.android.apis.app.AlertDialogSamples");
 
   await driver.pause(5000);
@@ -12,10 +16,14 @@ Given('Access the App Alert Dialouge box directly', async () => {
 })
 
 When('Click repeat alarm button', async() => {
+    AllureReporter.addFeature('FEATURE-B');
+    AllureReporter.addSeverity('critical');
     await $('//android.widget.Button[@content-desc="Repeat alarm"]').click();
 })
 
 Then('Verify repeat alarm popup is coming', async() => {
+    AllureReporter.addFeature('FEATURE-C');
+    AllureReporter.addSeverity('critical');
     await expect ($('//android.widget.TextView[@resource-id="android:id/alertTitle"]')).toExist();
 })
 

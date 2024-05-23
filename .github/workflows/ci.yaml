@@ -15,7 +15,8 @@ jobs:
           env:
             BROWSERSTACK_USER: ${{ secrets.BS_USER }}
             BROWSERSTACK_KEY: ${{ secrets.BS_KEY }}
-          run: npx wdio wdio.android.bs.conf.js --spec test/feature/android-native.spec.feature
+          run: rmdir /s /q allure-results 
+          npx wdio wdio.android.bs.conf.js --spec test/feature/android-native.spec.feature
         - uses: actions/upload-artifact@v1
           if: failure()
           with:
