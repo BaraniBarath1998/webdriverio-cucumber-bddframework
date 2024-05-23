@@ -1,7 +1,7 @@
 const { prototype } = require('events');
 const allureReporter = require('@wdio/allure-reporter').default
 const allure = require('allure-commandline')
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const direc = 'C:\webdriverIO-cucumber-BDDframework\webdriverio-cucumber-bddframework\allure-results';
 // require('dotenv').config()
@@ -186,15 +186,14 @@ exports.config = {
    onPrepare: function (config, capabilities) {
         console.log("started deleting allure files");
 
-        function removeAllFilesSync(directory) {
-            const files = fs.readdirSync(directory);
+        async function removeRecursively(directory) {
+            await fs.rm(directory, {recursive:true});
             
-            for (const file of files) {
-                const filePath = path.join(directory, file);
-                fs.unlinkSync(filePath);
+            // for (const file of files) {
+            //     const filePath = path.join(directory, file);
+            //     await fs.unlinkSync(filePath);
             }
-        }
-        removeAllFilesSync('allure-results');
+        removeRecursively('allure-results');
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service

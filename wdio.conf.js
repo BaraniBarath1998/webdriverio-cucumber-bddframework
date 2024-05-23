@@ -5,7 +5,7 @@ const allure = require('allure-commandline');
 // const allureCommandline = require('allure-commandline');
 // below dynamic import to import chai module
 import('chai')
-const fs = require('fs');
+const fs = require('fs').promises;
 const direc = 'C:\webdriverIO-cucumber-BDDframework\webdriverio-cucumber-bddframework\allure-results';
 exports.config = {
     //
@@ -192,17 +192,14 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
     onPrepare: function (config, capabilities) {
+
                 console.log("started deleting allure files");
 
-        function removeAllFilesSync(directory) {
-            const files = fs.readdirSync(directory);
-            
-            for (const file of files) {
-                const filePath = path.join(directory, file);
-                fs.unlinkSync(filePath);
-            }
-        }
-        removeAllFilesSync('allure-results');
+                async function removeRecursively(directory) {
+                    await fs.rm(directory, {recursive:true});
+                }
+                removeRecursively('C:/webdriverIO-cucumber-BDDframework/webdriverio-cucumber-bddframework/allure-results');
+                
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
