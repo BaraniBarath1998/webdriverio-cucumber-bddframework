@@ -1,1 +1,1 @@
-[]
+[{"name":"Jenkins","type":"jenkins","url":"http://localhost:8080/","buildOrder":39,"buildName":"appiumjob #39","buildUrl":"http://localhost:8080/job/appiumjob/39/","reportName":"AllureReport","reportUrl":"http://localhost:8080/job/appiumjob/39/allure"}]
