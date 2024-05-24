@@ -3,7 +3,8 @@ const allureReporter = require('@wdio/allure-reporter').default
 const allure = require('allure-commandline')
 const fs = require('fs').promises;
 const path = require('path');
-const direc = 'C:\webdriverIO-cucumber-BDDframework\webdriverio-cucumber-bddframework\allure-results';
+const process = require('process');
+// const direc = 'C:\ProgramData\Jenkins\.jenkins\workspace\appiumjob\allure-results';
 // require('dotenv').config()
 require('dotenv').config()
 console.log("process is",process.env.BROWSERSTACK_USER)
@@ -340,6 +341,9 @@ exports.config = {
      * @param {<Object>} results object containing test results
      */
      onComplete: function(exitCode, config, capabilities, results) {
+         console.log("present working directory" + process.cwd());
+         process.chdir('C:\\webdriverIO-cucumber-BDDframework\\webdriverio-cucumber-bddframework');
+         console.log("changed working directory" + process.cwd());
         const reportError = new Error('Could not generate Allure report')
         const generation = allure(['generate', 'allure-results', '--clean'])
         return new Promise((resolve, reject) => {
